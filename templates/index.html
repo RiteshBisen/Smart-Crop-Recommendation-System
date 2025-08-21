@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌱 Crop Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌱 Smart Crop Recommendation System</h1>
+            <p>Get AI-powered crop recommendations based on your soil conditions</p>
+        </header>
+
+        <main>
+            <form id="cropForm" class="prediction-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nitrogen">
+                            🍃 Nitrogen (N)
+                            <span class="range">0-140 mg/kg</span>
+                        </label>
+                        <input type="number" id="nitrogen" name="nitrogen" 
+                               min="0" max="140" step="0.1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phosphorus">
+                            🔥 Phosphorus (P)
+                            <span class="range">5-145 mg/kg</span>
+                        </label>
+                        <input type="number" id="phosphorus" name="phosphorus" 
+                               min="5" max="145" step="0.1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="potassium">
+                            ⚡ Potassium (K)
+                            <span class="range">5-205 mg/kg</span>
+                        </label>
+                        <input type="number" id="potassium" name="potassium" 
+                               min="5" max="205" step="0.1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="temperature">
+                            🌡️ Temperature
+                            <span class="range">8-44°C</span>
+                        </label>
+                        <input type="number" id="temperature" name="temperature" 
+                               min="8" max="44" step="0.1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="humidity">
+                            💧 Humidity
+                            <span class="range">14-100%</span>
+                        </label>
+                        <input type="number" id="humidity" name="humidity" 
+                               min="14" max="100" step="0.1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ph">
+                            ⚗️ pH Level
+                            <span class="range">3.5-9.9</span>
+                        </label>
+                        <input type="number" id="ph" name="ph" 
+                               min="3.5" max="9.9" step="0.1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rainfall">
+                            🌧️ Rainfall
+                            <span class="range">20-299 mm</span>
+                        </label>
+                        <input type="number" id="rainfall" name="rainfall" 
+                               min="20" max="299" step="0.1" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="predict-btn">
+                    🔮 Get Crop Recommendation
+                </button>
+            </form>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Analyzing your soil conditions...</p>
+            </div>
+
+            <div id="result" class="result hidden">
+                <h2 id="recommendedCrop"></h2>
+                <p id="confidence"></p>
+                <div id="status"></div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="info-section">
+                <h3>ℹ️ How It Works</h3>
+                <p>This system analyzes your soil parameters and environmental conditions to recommend the most suitable crops using agricultural science principles.</p>
+                
+                <div class="parameter-info">
+                    <h4>Parameter Guide:</h4>
+                    <ul>
+                        <li><strong>🍃 Nitrogen (N):</strong> Essential for plant growth and leaf development</li>
+                        <li><strong>🔥 Phosphorus (P):</strong> Important for root development and flowering</li>
+                        <li><strong>⚡ Potassium (K):</strong> Helps with disease resistance and fruit quality</li>
+                        <li><strong>🌡️ Temperature:</strong> Average temperature during growing season</li>
+                        <li><strong>💧 Humidity:</strong> Relative humidity in the air</li>
+                        <li><strong>⚗️ pH Level:</strong> Soil acidity/alkalinity level</li>
+                        <li><strong>🌧️ Rainfall:</strong> Annual precipitation amount</li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
